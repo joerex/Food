@@ -1,0 +1,10 @@
+.DS_Store
+*.sw*
+*.seed
+*.tmp
+.project
+.settings
+data
+node_modules/
+output
+build

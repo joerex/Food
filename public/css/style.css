@@ -1,0 +1,242 @@
+html {
+	background:white;}
+	
+header {
+	background:black;
+	padding: 20px 25px;}
+	
+header h1 {
+	color:white;
+	font-family:Helvetica, Arial, sans-serif;
+	font-size:17px;}
+
+h6 {
+	border-bottom: 1px solid black;
+	padding-bottom: 5px;
+	margin: 0 0 20px;}
+	
+input[readonly="true"] {
+	background: white;
+	cursor: pointer;}
+
+#wrapper {
+	width:320px;
+	background:#f9f9f9;
+	background-size: 320px auto;
+	margin: 0 auto;}
+	
+#add-meal input, #add-food input, #add-meal select {
+		width:auto;
+		margin-bottom:0;}
+	
+#add-meal { 
+	width:300px;
+	margin: 20px auto 50px;}
+	
+#add-meal-bar {
+	background:white;
+	padding:10px;
+	box-shadow: 0 0 3px 0px rgba(0,0,0,.1);}
+	
+	
+#add-meal .food-container {
+	position: relative;
+	background: white;
+	padding: 15px 18px;
+	margin: 9px auto;
+	width: 80%;
+	box-shadow:0 0 3px 0px rgba(0,0,0,.1);}
+	
+#add-meal .search-results {
+	display:none;
+	position: absolute;
+	z-index: 1;
+	width: 187px;
+	min-height: 35px;
+	background: white;
+	border: 1px solid #efefef;
+	top: 76px;}
+	
+#add-meal .search-result-item {
+	display:block;
+	padding:10px 10px;
+	text-decoration:none;
+	cursor:pointer;}
+	
+#add-meal .not-found {
+	display:block;
+	padding:10px 10px;}
+	
+#ui-datepicker-div {
+		width:200px !important;}
+		
+#add-meal .status-container {
+	width:80px;
+	float:left;
+	font-size:80%;
+	padding:6px 0 0;
+	text-align:center;}
+	
+#add-meal .when-container {
+	width:75px;
+	float:left;}
+	
+#add-meal .when-container input {
+	width:75px;}
+
+#add-meal .for-container {
+	width:103px;
+	float:right;}
+	
+#add-meal .for-container select {
+	width:103px;}
+	
+#add-meal .food {
+	width:195px;}
+	
+#add-meal .sec {
+	margin: 18px 0 0;
+	padding: 14px 0 0;
+	border-top: 1px solid #efefef;}
+	
+#add-meal .food.searching {
+	background-image: url(../img/loading.gif);
+	background-size: 15px 15px;
+	background-position: 164px 6px;
+	background-repeat: no-repeat;}
+	
+#add-meal .amount {
+	width:30px;}
+	
+#add-meal .unit {
+	padding: 0 0 0 5px;}
+	
+#add-meal .unit select {
+	width: 134px;}
+	
+#add-meal-item {
+	margin: 20px auto 13px;
+	display: block;
+	width: 80%;
+	padding: 4px 18px;}
+	
+@-webkit-keyframes loading {
+	0% {
+		background-position:-300px;}
+	100% {
+		background-position:0;}         
+}
+	
+#add-meal .submit {
+	display: block;
+	width: 225px;
+	-webkit-animation-name: loading;
+    -webkit-animation-duration:20s;
+    -webkit-animation-direction: normal;
+    -webkit-animation-timing-function:linear;
+    -webkit-animation-play-state:paused;
+    width: 93%;
+	margin: 15px auto 0;}
+	
+#add-meal .submit.saving {
+	background-image:url(../img/loading-btn-bg.png);
+	background-repeat: repeat-x;
+	-webkit-animation-play-state:running;}
+	
+#review {
+	width: 280px;
+	margin: 20px auto 50px;
+	padding: 20px;
+	background: white;
+	border-top: 4px solid black;}
+
+#review .left {
+	float:left;
+	width:75px;
+	margin:0 10px 0 0;}
+	
+#review .left input {
+	width:60px;
+	font-size: 11px;}
+	
+#review .right {
+	float:right;}
+	
+#review label {
+	font-size:11px;}
+	
+#review .submit {
+	font-size: 9px;
+	position: relative;
+	top: 24px;
+	-webkit-animation-name: loading;
+    -webkit-animation-duration:20s;
+    -webkit-animation-direction: normal;
+    -webkit-animation-timing-function:linear;
+    -webkit-animation-play-state:paused;}
+    
+#review .submit.saving {
+	background-image:url(../img/loading-btn-bg.png);
+	background-repeat: repeat-x;
+	-webkit-animation-play-state:running;}
+	
+#review h6 {
+	margin: 10px 0 0;}
+
+.review-meal-item {
+	position: relative;
+	padding:0 10px;
+	margin:0 auto 15px;}
+	
+.review-meal-item:hover {
+	cursor: pointer;
+	-webkit-box-shadow:  0px 0px 4px 2px rgba(0, 0, 0, .1);
+    box-shadow:  0px 0px 4px 2px rgba(0, 0, 0, .1);}
+	
+.review-meal-item .food {
+	font-size:11px;}
+	
+.review-meal-item .amount {
+	font-size:9px;}
+	
+.review-meal-item .unit {
+	font-size:9px;}
+	
+#review .food-cal {
+	font-size:11px;}
+	
+#review .review-food {
+	padding:13px 0;
+	border-top:1px solid #efefef;}
+	
+#review .review-food:first-child {
+	border:none;}
+	
+.meal-options {
+	position: absolute;
+	width:205px;
+	height:100%;
+	top:0;
+	background: rgba(255,255,255,.9);}
+	
+.meal-options .btn {
+	padding-left:0;
+	padding-right:0;
+	display: block;
+	width:90%;
+	margin: 10px auto;}
+	
+.remove {
+	float: right;
+	display: block;
+	width: 15px;
+	height: 15px;
+	margin: 7px 0;
+	background: url(../img/close.png) no-repeat 0 0;
+	background-size: 15px 15px;}
+	
+.remove:hover {
+	text-decoration: none;
+	background: #999;
+	cursor: pointer;}
+	

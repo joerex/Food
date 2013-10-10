@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta name="viewport" content="width=device-width, user-scalable=0">
+	<link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/jquery-ui-1.10.3.custom.css" rel="stylesheet" />
+	<link href="css/style.css" rel="stylesheet" />
+	<script src="http://code.jquery.com/jquery.js"></script>
+    <script src="js/jquery-ui-1.10.3.custom.min.js"></script>
+    <script src="js/underscore.js"></script>
+</head>
+<body> 
+	
+	<div id="wrapper">
+    	<header>
+        	<h1>food-stuff</h1>
+        </header>
+		<section id="add-meal">
+			<form id="add-meal-form" action="postmeal.php">
+           		<div id="add-meal-bar" class="clearfix">
+                	<div class="status-container">
+                    	<span class="status">NEW MEAL</span>
+                    </div>
+                    <div class="when-container">
+                        <input readonly="true" class="datepicker" type="text" name="date" />
+                    </div>
+                    <div class="for-container">
+                        <select name="type" form="add-meal-form">
+                            <option value="breakfast">breakfast</option>
+                            <option value="lunch">lunch</option>
+                            <option value="dinner">dinner</option>
+                            <option value="snack">snack</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="food-container">
+                	<a class="remove"></a>
+                    <label for="food">Food</label><input class="food" type="text" name="food[]" autocomplete="off" value="" data-id="" />
+                   	<label for="amount[]">Amount</label><input class="amount" type="text" name="amount[]" value="1" />
+                    <span class="unit">
+                        <select name="unit[]" form="add-meal-form"></select>
+                    </span>
+                    <div class="search-results"></div>
+                </div>
+				<a class="btn" id="add-meal-item">Add More Food</a>
+				<input class="submit btn" type="submit" value="Add Meal" />
+			</form>
+		</section>
+		
+        <section id="review">
+        	<h6>Review</h6>
+            <form class="clearfix">
+            	<div class="left">
+               		<label for="start_date">Start Date</label>
+                	<input id="starting-date" readonly="true" name="start_date" type="text" class="datepicker" value="" />
+                </div>
+                <div class="left">
+                	<label for="end_date">End Date</label>
+                	<input id="ending-date" readonly="true" name="end_date" type="text" class="datepicker" value="" />
+                 </div>
+                 <div class="right">
+                	<input type="submit" align="Review" class="submit btn" />
+                 </div>
+            </form>
+            <div id="review-content"></div>
+            <!--<div>Calories:</div>-->
+            <!--<div id="total-calories"></div>-->
+        </section>
+	</div>
+	
+	
+	<!-- TEMPLATES -->
+	
+    <script type="text/template" id="review-template">
+		<div class="">
+			<% _.each(meals, function(meal) { %>
+			<div class="review-meal-item clearfix" id="<%- meal._id %>">
+				<h6><%- meal.type %></h6>
+				<span class="date"><%- meal.date %></span>
+				<div class="meal-food-container">
+				<% _.each(meal.food, function(food) { %>
+					<div class="review-food">
+						<div class="food"><%- food.name %></div>
+						<div class="quantity clearfix">
+							<span class="amount"><%- food.amount %></span>
+							<span class="unit"><%- food.unit %></span>
+						</div>
+						<div class="food-cal"><%- food.calories %> c</div>
+					</div>
+				<% }); %>
+				</div>
+			</div>
+			<% }); %>
+		</div>
+	</script>
+	<script type="text/template" id="food-template">
+		<div class="food-container">
+			<a class="remove"></a>
+            <label for="food">Food</label><input class="food" type="text" name="food[]" autocomplete="off" value="" data-id="" />
+            <label for="amount">Amount</label><input class="amount" type="text" name="amount[]" value="1" />
+        	<span class="unit">
+				<select name="unit[]" form="add-meal-form"></select>
+			</span>
+            <div class="search-results"></div>
+        </div>
+	</script>
+	<script type="text/template" id="update-food-template">
+		<% _.each(food, function(food) { %>
+			<div class="food-container">
+				<a class="remove">-</a>
+            	<input class="food" type="text" name="food[]" autocomplete="off" value="<%- food.name %>" data-id="" />
+				<label for="amount">Amount</label><input class="amount" type="text" name="amount[]" value="<%- food.amount %>" />
+				<span class="unit">
+					<select name="unit[]" form="add-meal-form">
+						<%- food.unit %>
+					</select>
+				</span>
+	            <div class="search-results"></div>
+        	</div>
+         <% }); %>
+	</script>
+	<script type="text/template" id="meals-template">
+		<div class="meals-container">
+			<% _.each(data.meals, function(meal) { %>
+			<div class="meal">
+				<h6><%- meal.id %></h6>
+				<% _.each(meal.foods, function(food) { %>
+					<p><%- food.name %></p>
+				<% }); %>
+			</div>
+			<% }); %>
+		</div>
+	</script>
+	<script type="text/template" id="search-template">
+		<div class="search-container">
+			<% _.each(foods, function(food) { %>
+			<div class="food">
+				<a class="search-result-item" data-id="<%- food.id %>" ><%- food.description %></a>
+			</div>
+			<% }); %>
+		</div>
+	</script>
+	<script type="text/template" id="unit-template">
+			<% _.each(portions, function(portion) { %>
+				<option><%- portion.unit %> (<%- portion.grams %>g)</option>
+			<% }); %>
+	</script>
+	
+	<!-- END TEMPLATES -->
+	
+    <script>
+		$( ".datepicker" ).datepicker();
+	</script>
+	<script src="js/food.js"></script>
+</body>
+</html>
